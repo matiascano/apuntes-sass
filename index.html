@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hablemos de Sass</title>
+  <script src="https://cdn.tailwindcss.com"></script> 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#CF649A',
+                        'secondary': '#1F2937',
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .active {
+            color: #CF649A!important;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Logo -->
+    <header class="bg-white shadow">
+      <div class="max-w-4xl mx-auto p-6 flex items-center justify-between">
+        <h1 class="text-2xl font-bold text-primary">Hablemos de Sass</h1>
+        <img src="./assets/img/logoSass.svg" alt="Sass Logo" class="h-10">
+      </div>
+    </header>
+
+    <!-- Navegación -->
+    <nav class="bg-gray-200 p-4 sticky top-0 z-50 shadow">
+      <ul class="flex space-x-4 justify-center">
+        <li><a href="#inicio" class="nav-link text-secondary hover:underline">Inicio</a></li>
+        <li><a href="#variables" class="nav-link text-secondary hover:underline">Variables</a></li>
+        <li><a href="#nesting" class="nav-link text-secondary hover:underline">Anidamiento</a></li>
+        <li><a href="#mixins" class="nav-link text-secondary hover:underline">Mixins</a></li>
+        <li><a href="#functions" class="nav-link text-secondary hover:underline">Funciones</a></li>
+        <li><a href="#partials" class="nav-link text-secondary hover:underline">Partials</a></li>
+        <li><a href="#extend" class="nav-link text-secondary hover:underline">Extend</a></li>
+        <li><a href="#each" class="nav-link text-secondary hover:underline">Each</a></li>
+        <li><a href="#for" class="nav-link text-secondary hover:underline">For</a></li>
+        <li><a href="#if" class="nav-link text-secondary hover:underline">If / Else</a></li>
+      </ul>
+    </nav>
+
+    <section id="inicio"  class="max-w-4xl mx-auto p-6 mb-12 scroll-mt-24">
+        <div class="max-w-2xl mx-auto p-6 mb-6">
+          <img src="./assets/img/meme.webp" alt="Meme sobre Sass" class="w-full rounded-lg shadow-lg">
+        </div>
+        <h1 class="text-3xl font-bold mb-6">Unos conceptos básicos de Sass</h1>
+        <h2 class="text-2xl font-bold mb-6 text-primary">Qué es Sass?</h2>
+        <p class="mb-10 text-lg">Sass es un preprocesador de CSS que mejora tu productividad al escribir código más limpio, modular y reutilizable. A continuación, explorarás los conceptos básicos de Sass, cómo usarlos y cuándo son útiles.</p>
+    </section>
+
+    <!-- Contenido principal -->
+
+  <div class="max-w-4xl mx-auto p-6">
+    <!-- Sección: Variables -->
+    <section id="variables" class="mb-12 scroll-mt-24">
+      <h2 class="text-2xl font-semibold mb-2 text-primary">:variables</h2>
+      <p class="mb-4 italic">Permiten almacenar valores reutilizables como colores, fuentes o tamaños.</p>
+    <h3 class="font-medium mt-4 text-primary">Versión Sass:</h3>
+      <pre class="bg-gray-900 text-white p-4 mt-2 rounded-md overflow-x-auto">
+<code class="language-scss text-primary">
+$primary-color: #1daa7b;
+
+.button {
+  background-color: $primary-color;
+}
+</code>
+      </pre>
+
+      <p class="mt-4">Este código define una variable `$primary-color` y la usa dentro de una clase `.button`. Esto evita repetir el color varias veces y facilita su mantenimiento.</p>
+
+      <h3 class="font-medium mt-4 text-primary">Resultado CSS:</h3>
+      <pre class="bg-white border p-4 rounded-md mt-2 overflow-x-auto">
+<code class="language-css">
+.button {
+  background-color: #1daa7b;
+}
+</code>
+      </pre>
+
+      <p class="mt-2 text-sm text-gray-600"><strong>Cuándo usarlo:</strong> Para colores de marca, breakpoints, tipografías, o cualquier valor que se repita a lo largo del proyecto.</p>
+    </section>
+
+    <!-- Sección: Anidamiento -->
+    <section id="nesting" class="mb-12 scroll-mt-24">
+      <h2 class="text-2xl font-semibold mb-2 text-primary">Anidamiento (Nesting)</h2>
+      <p class="mb-4 italic">Organiza selectores CSS de forma visual y semántica.</p>
+        <h3 class="font-medium mt-4 text-primary">Versión Sass:</h3>
+      <pre class="bg-gray-900 text-white p-4 mt-2 rounded-md overflow-x-auto">
+<code class="language-scss">
+nav {
+  ul {
+    list-style: none;
+    li {
+      display: inline-block;
+    }
+  }
+}
+</code>
+      </pre>
+
+      <p class="mt-4">Este ejemplo muestra cómo anidar reglas CSS. Es útil para mantener el estilo relacionado con estructuras HTML jerárquicas.</p>
+
+      <h3 class="font-medium mt-4 text-primary">Resultado CSS:</h3>
+      <pre class="bg-white border p-4 rounded-md mt-2 overflow-x-auto">
+<code class="language-css">
+nav ul {
+  list-style: none;
+}
+nav ul li {
+  display: inline-block;
+}
+</code>
+      </pre>
+
+      <p class="mt-2 text-sm text-gray-600"><strong>Cuándo usarlo:</strong> Para elementos como menús, formularios o componentes complejos donde la relación padre-hijo sea clara.</p>
+    </section>
+
+    <!-- Sección: Mixins -->
+    <section id="mixins" class="mb-12 scroll-mt-24">
+      <h2 class="text-2xl font-semibold mb-2 text-primary">Mixins</h2>
+      <p class="mb-4 italic">Bloques reutilizables que pueden recibir parámetros.</p>
+        <h3 class="font-medium mt-4 text-primary">Versión Sass:</h3>
+      <pre class="bg-gray-900 text-white p-4 mt-2 rounded-md overflow-x-auto">
+<code class="language-scss">
+@mixin btn($bg) {
+  padding: 10px 20px;
+  background: $bg;
+  color: white;
+}
+
+.primary-btn {
+  @include btn(#1daa7b);
+}
+</code>
+      </pre>
+
+      <p class="mt-4">Los mixins permiten reutilizar bloques de código con variaciones. En este ejemplo, se define un estilo de botón que recibe un color de fondo.</p>
+
+      <h3 class="font-medium mt-4 text-primary">Resultado CSS:</h3>
+      <pre class="bg-white border p-4 rounded-md mt-2 overflow-x-auto">
+<code class="language-css">
+.primary-btn {
+  padding: 10px 20px;
+  background: #1daa7b;
+  color: white;
+}
+</code>
+      </pre>
+
+      <p class="mt-2 text-sm text-gray-600"><strong>Cuándo usarlo:</strong> Para componentes reutilizables como botones, tarjetas, animaciones o media queries personalizados.</p>
+    </section>
+
+    <!-- Sección: Funciones -->
+    <section id="functions" class="mb-12 scroll-mt-24">
+      <h2 class="text-2xl font-semibold mb-2 text-primary">Funciones</h2>
+      <p class="mb-4 italic">Realiza cálculos personalizados y devuelve un valor.</p>
+        <h3 class="font-medium mt-4 text-primary">Versión Sass:</h3>
+      <pre class="bg-gray-900 text-white p-4 mt-2 rounded-md overflow-x-auto">
+<code class="language-scss">
+$base: 16px;
+
+@function double($value) {
+  @return $value * 2;
+}
+
+h1 {
+  font-size: double($base);
+}
+</code>
+      </pre>
+
+      <p class="mt-4">Las funciones permiten realizar operaciones dinámicas. Este ejemplo define una función `double()` que multiplica un valor por dos.</p>
+
+      <h3 class="font-medium mt-4 text-primary">Resultado CSS:</h3>
+      <pre class="bg-white border p-4 rounded-md mt-2 overflow-x-auto">
+<code class="language-css">
+h1 {
+  font-size: 32px;
+}
+</code>
+      </pre>
+
+      <p class="mt-2 text-sm text-gray-600"><strong>Cuándo usarlo:</strong> Para cálculos dinámicos como tamaños responsivos, espaciados, opacidad, etc.</p>
+    </section>
+
+    <!-- Sección: Partials e Import -->
+    <section id="partials" class="mb-12 scroll-mt-24">
+      <h2 class="text-2xl font-semibold mb-2 text-primary">Partials & Import</h2>
+      <p class="mb-4 italic">Divide tu código en archivos pequeños y organiza tus estilos.</p>
+        <h3 class="font-medium mt-4 text-primary">Versión Sass:</h3>
+      <pre class="bg-gray-900 text-white p-4 mt-2 rounded-md overflow-x-auto">
+<code class="language-scss">
+// _variables.scss
+$primary: #1daa7b;
+
+// main.scss
+@import 'variables';
+
+body {
+  color: $primary;
+}
+</code>
+      </pre>
+
+      <p class="mt-4">Los partials son archivos SCSS que comienzan con `_`, y no se compilan solos. Los puedes importar desde otros archivos para modularizar tu código.</p>
+
+      <h3 class="font-medium mt-4 text-primary">Resultado CSS:</h3>
+      <pre class="bg-white border p-4 rounded-md mt-2 overflow-x-auto">
+<code class="language-css">
+body {
+  color: #1daa7b;
+}
+</code>
+      </pre>
+
+      <p class="mt-2 text-sm text-gray-600"><strong>Cuándo usarlo:</strong> Para proyectos grandes, donde la organización y separación de responsabilidades es importante (ej: variables, reset, layout, components).</p>
+    </section>
+
+    <!-- Sección: Extend -->
+    <section id="extend" class="mb-12 scroll-mt-24">
+      <h2 class="text-2xl font-semibold mb-2 text-primary">Extend / Herencia</h2>
+      <p class="mb-4 italic">Reutiliza bloques completos de estilo sin duplicar código.</p>
+      <h3 class="font-medium mt-4 text-primary">Versión Sass:</h3>
+      <pre class="bg-gray-900 text-white p-4 mt-2 rounded-md overflow-x-auto">
+<code class="language-scss">
+%btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.btn-success {
+  @extend %btn;
+  background: green;
+}
+</code>
+      </pre>
+
+      <p class="mt-4">Con `@extend`, puedes heredar estilos definidos en otro selector. Aquí, `.btn-success` hereda todo el estilo de `%btn` y agrega uno nuevo.</p>
+
+      <h3 class="font-medium mt-4 text-primary">Resultado CSS:</h3>
+      <pre class="bg-white border p-4 rounded-md mt-2 overflow-x-auto">
+<code class="language-css">
+.btn-success {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: green;
+}
+</code>
+      </pre>
+
+      <p class="mt-2 text-sm text-gray-600"><strong>Cuándo usarlo:</strong> Cuando tienes múltiples clases con estilos similares, como botones, alertas o mensajes.</p>
+    </section>
+
+    <!-- Sección: Each Loop -->
+    <section id="each" class="mb-12 scroll-mt-24">
+      <h2 class="text-2xl font-semibold mb-2 text-primary">@each</h2>
+      <p class="mb-4 italic">Genera múltiples reglas a partir de una lista.</p>
+
+      <h3 class="font-medium mt-4 text-primary">Versión Sass:</h3>
+      <pre class="bg-gray-900 text-white p-4 mt-2 rounded-md overflow-x-auto">
+<code class="language-scss">
+$colors: primary red blue;
+
+@each $color in $colors {
+  .text-$color {
+    color: $color;
+  }
+}
+</code>
+      </pre>
+
+      <p class="mt-4">El bucle `@each` itera sobre una lista y genera estilos dinámicos. En este ejemplo, se crean tres clases de texto basadas en los colores definidos.</p>
+
+      <h3 class="font-medium mt-4 text-primary">Resultado CSS:</h3>
+      <pre class="bg-white border p-4 rounded-md mt-2 overflow-x-auto">
+<code class="language-css">
+.text-primary {
+  color: primary;
+}
+.text-red {
+  color: red;
+}
+.text-blue {
+  color: blue;
+}
+</code>
+      </pre>
+
+      <p class="mt-2 text-sm text-gray-600"><strong>Cuándo usarlo:</strong> Para generar automáticamente clases utilitarias, paletas de colores, iconos, etc.</p>
+    </section>
+
+    <!-- Sección: For Loop -->
+    <section id="for" class="mb-12 scroll-mt-24">
+      <h2 class="text-2xl font-semibold mb-2 text-primary">@for</h2>
+      <p class="mb-4 italic">Itera un número específico de veces para crear estilos escalables.</p>
+
+      <h3 class="font-medium mt-4 text-primary">Versión Sass:</h3>
+      <pre class="bg-gray-900 text-white p-4 mt-2 rounded-md overflow-x-auto">
+<code class="language-scss">
+@for $i from 1 through 5 {
+  .col-#{$i} {
+    width: 20px * $i;
+  }
+}
+</code>
+      </pre>
+
+      <p class="mt-4">El bucle `@for` permite generar estilos basados en un rango numérico. Aquí creamos cinco columnas con anchos progresivos.</p>
+
+      <h3 class="font-medium mt-4 text-primary">Resultado CSS:</h3>
+      <pre class="bg-white border p-4 rounded-md mt-2 overflow-x-auto">
+<code class="language-css">
+.col-1 { width: 20px; }
+.col-2 { width: 40px; }
+.col-3 { width: 60px; }
+.col-4 { width: 80px; }
+.col-5 { width: 100px; }
+</code>
+      </pre>
+
+      <p class="mt-2 text-sm text-gray-600"><strong>Cuándo usarlo:</strong> Para generar sistemas de rejilla, espaciados, títulos responsivos u otros patrones numéricos.</p>
+    </section>
+
+    <!-- Sección: Condicionales -->
+    <section id="if" class="mb-12 scroll-mt-24">
+      <h2 class="text-2xl font-semibold mb-2 text-primary">@if / @else</h2>
+      <p class="mb-4 italic">Ejecuta estilos condicionalmente según una expresión lógica.</p>
+
+      <h3 class="font-medium mt-4 text-primary">Versión Sass:</h3>
+      <pre class="bg-gray-900 text-white p-4 mt-2 rounded-md overflow-x-auto">
+<code class="language-scss">
+$theme: dark;
+
+@if $theme == dark {
+  body {
+    background: black;
+    color: white;
+  }
+} @else {
+  body {
+    background: white;
+    color: black;
+  }
+}
+</code>
+      </pre>
+
+      <p class="mt-4">Con `@if` y `@else`, puedes aplicar estilos dependiendo del valor de una variable. En este caso, cambiamos entre tema claro y oscuro.</p>
+
+      <h3 class="font-medium mt-4 text-primary">Resultado CSS:</h3>
+      <pre class="bg-white border p-4 rounded-md mt-2 overflow-x-auto">
+<code class="language-css">
+body {
+  background: black;
+  color: white;
+}
+</code>
+      </pre>
+
+      <p class="mt-2 text-sm text-gray-600"><strong>Cuándo usarlo:</strong> Para configuraciones temáticas, estilos condicionales o generación de variantes dinámicas.</p>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="max-w-4xl mx-auto p-6 text-center">
+      <p class="text-gray-600"> 
+        Hablemos de Sass. Todos los derechos regalados.</p>
+      <p class="text-gray-600">Creado por <a href="https://matiascano.com.ar" class="text-primary hover:underline">Matías Cano</a> con amor 🖤.</p>
+  </footer>
+<script>
+    const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute("id");
+        const link = document.querySelector(`.nav-link[href="#${id}"]`);
+
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => link.classList.remove("active"));
+          link.classList.add("active");
+        }
+      });
+    },
+    {
+      threshold: 0.6, // Detectar cuando el 60% de la sección está visible
+    }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+</script>
+</body>
+</html>
