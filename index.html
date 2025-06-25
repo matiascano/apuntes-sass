@@ -57,6 +57,17 @@
         <h1 class="text-3xl font-bold mb-6">Unos conceptos básicos de Sass</h1>
         <h2 class="text-2xl font-bold mb-6 text-primary">Qué es Sass?</h2>
         <p class="mb-10 text-lg">Sass es un preprocesador de CSS que mejora tu productividad al escribir código más limpio, modular y reutilizable. A continuación, explorarás los conceptos básicos de Sass, cómo usarlos y cuándo son útiles.</p>
+        <h2 class="text-2xl font-bold mb-6 text-primary">Instalación</h2>
+        <p class="mb-4">Para comenzar a usar Sass, necesitas instalarlo. Puedes hacerlo con node:</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Usando Node.js: <code class="bg-gray-200 p-1 rounded">npm install -g sass</code></li>
+        </ul>
+        <p class="mb-4">Una vez instalado, puedes compilar archivos Sass con el comando:</p>
+        <pre class="bg-gray-200 p-4 rounded mb4">
+          <code class="text-primary">sass input.scss output.css</code>
+        </pre>
+        <p class="mb-4">Esto convertirá tu archivo Sass en un archivo CSS estándar que los navegadores pueden entender.</p>
+        <p class="mb-4">Esta ultima linea fundamental, ya que Sass no es un lenguaje final, sino un preprocesador que transforma tu código Sass en CSS.</p>
     </section>
 
     <!-- Contenido principal -->
@@ -334,7 +345,7 @@ $colors: primary red blue;
 
     <!-- Sección: Condicionales -->
     <section id="if" class="mb-12 scroll-mt-24">
-      <h2 class="text-2xl font-semibold mb-2 text-primary">@if / @else</h2>
+      <h2 class="text-2xl font-semibold mb-2 text-primary">if / else</h2>
       <p class="mb-4 italic">Ejecuta estilos condicionalmente según una expresión lógica.</p>
 
       <h3 class="font-medium mt-4 text-primary">Versión Sass:</h3>
@@ -356,7 +367,7 @@ $theme: dark;
 </code>
       </pre>
 
-      <p class="mt-4">Con `@if` y `@else`, puedes aplicar estilos dependiendo del valor de una variable. En este caso, cambiamos entre tema claro y oscuro.</p>
+      <p class="mt-4">Con `if` y `else`, puedes aplicar estilos dependiendo del valor de una variable. En este caso, cambiamos entre tema claro y oscuro.</p>
 
       <h3 class="font-medium mt-4 text-primary">Resultado CSS:</h3>
       <pre class="bg-white border p-4 rounded-md mt-2 overflow-x-auto">
