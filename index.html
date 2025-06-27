@@ -74,8 +74,51 @@
         </pre>
         <p class="mb-4">Esto convertirá tu archivo Sass en un archivo CSS estándar que los navegadores pueden entender.</p>
         <p class="mb-4">Esta ultima linea fundamental, ya que Sass no es un lenguaje final, sino un preprocesador que transforma tu código Sass en CSS.</p>
-    </section>
+    
+        <!-- Sección de solución para Windows -->
+<div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-6 rounded-r-lg">
+  <div class="flex items-start">
+    <div class="flex-shrink-0">
+      <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+      </svg>
+    </div>
+    <div class="ml-3">
+      <h3 class="text-sm font-medium text-yellow-800 mb-2">
+        ⚠️ Problema común en Windows
+      </h3>
+      <div class="text-sm text-yellow-700">
+        <p class="mb-3">Si al ejecutar <code class="bg-yellow-100 px-1 rounded">sass --watch</code> en Windows aparece el error de "política de ejecución", sigue estos pasos:</p>
+        
+        <div class="bg-white p-3 rounded border border-yellow-200 mb-3">
+          <p class="font-semibold text-yellow-800 mb-2">Paso 1: Abrir PowerShell como administrador</p>
+          <ol class="list-decimal list-inside space-y-1 text-sm">
+            <li>Buscar "PowerShell" en el menú Inicio</li>
+            <li>Hacer clic derecho > "Ejecutar como administrador"</li>
+          </ol>
+        </div>
 
+        <div class="bg-white p-3 rounded border border-yellow-200 mb-3">
+          <p class="font-semibold text-yellow-800 mb-2">Paso 2: Cambiar la política temporalmente</p>
+          <pre class="bg-gray-900 text-green-400 p-2 rounded text-xs overflow-x-auto"><code>Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned</code></pre>
+          <p class="text-xs mt-1">Presionar <strong>Y</strong> para confirmar</p>
+        </div>
+
+        <div class="bg-white p-3 rounded border border-yellow-200">
+          <p class="font-semibold text-yellow-800 mb-2">Paso 3: Ejecutar de nuevo el comando</p>
+          <pre class="bg-gray-900 text-green-400 p-2 rounded text-xs overflow-x-auto"><code>sass --watch ./scss/components/estilos.scss ./css/estilos.css</code></pre>
+        </div>
+
+        <div class="mt-3 p-2 bg-blue-50 border border-blue-200 rounded">
+          <p class="text-xs text-blue-700">
+            <strong>💡 Tip:</strong> Este cambio solo afecta al usuario actual y permite ejecutar scripts firmados digitalmente, manteniendo la seguridad del sistema.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      </section>
     <!-- Contenido principal -->
 
   <div class="max-w-4xl mx-auto p-6">
