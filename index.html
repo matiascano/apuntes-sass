@@ -58,10 +58,16 @@
         <h2 class="text-2xl font-bold mb-6 text-primary">Qué es Sass?</h2>
         <p class="mb-10 text-lg">Sass es un preprocesador de CSS que mejora tu productividad al escribir código más limpio, modular y reutilizable. A continuación, explorarás los conceptos básicos de Sass, cómo usarlos y cuándo son útiles.</p>
         <h2 class="text-2xl font-bold mb-6 text-primary">Instalación</h2>
-        <p class="mb-4">Para comenzar a usar Sass, necesitas instalarlo. Puedes hacerlo con node:</p>
-        <ul class="list-disc pl-6 mb-4">
-          <li>Usando Node.js: <code class="bg-gray-200 p-1 rounded">npm install -g sass</code></li>
-        </ul>
+        <p class="mb-4">Para comenzar a usar Sass, necesitas seguir los siguientes pasos:</p>
+        <ol class="list-disc pl-6 mb-4">
+          <li>Instalamos usando Node.js: <code class="bg-gray-200 p-1 rounded">npm install -g sass</code></li>
+          <li>Creamos una carpeta sass dentro del proyecto, la cual contendrá los archivos de Sass</li>
+          <li>Dentreo de la carpeta creamos un archivo.scss (scss es la extensión para sass)</li>
+          <li>En la terminal, navegamos a la carpeta del proyecto y ejecutamos el comando: <code class="bg-gray-200 p-1 rounded">sass --watch sass:css</code> o <code class="bg-gray-200 p-1 rounded">sass --watch ./sass/archivo.scss ./css/archivo.css</code></li>
+          <li>Esto le indica a Sass que observe los cambios en la carpeta <code class="bg-gray-200 p-1 rounded">sass</code> y compile automáticamente los archivos Sass a CSS en la carpeta <code class="bg-gray-200 p-1 rounded">css</code>.</li>
+          <li>Si no tienes Node.js instalado, puedes descargarlo desde <a href="https://nodejs.org/" class="text-primary hover:underline">nodejs.org</a>.</li>
+
+        </ol>
         <p class="mb-4">Una vez instalado, puedes compilar archivos Sass con el comando:</p>
         <pre class="bg-gray-200 p-4 rounded mb4">
           <code class="text-primary">sass input.scss output.css</code>
